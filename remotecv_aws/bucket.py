@@ -31,6 +31,7 @@ class Bucket(object):
         Returns object at given path
         :param string path: Path or 'key' to retrieve AWS object
         """
+        path = "/".join(path.split('/')[1:])
         file_path = self._client.get_object( Bucket=self._bucket, Key=path)
         return file_path['Body'].read()
         
